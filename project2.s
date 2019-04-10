@@ -6,7 +6,6 @@
     softToneErrorMessage: .asciz "setup softTone failed"
     setupErrorCode = -1
 
-
 .text
 main:
     push {lr}
