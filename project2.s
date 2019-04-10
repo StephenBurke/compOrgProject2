@@ -4,21 +4,22 @@
 .data
     gpioErrorMessage: .asciz "Bail out - wiringPiSetupGpio() has failed!"
     softToneErrorMessage: .asciz "setup softTone failed"
-    setupErrorCode = -1
+    gpioSetupErrorCode = -1
 
 .text
 main:
     push {lr}
     bl wiringPiSetupGpio
-    cmp r0, #setupErrorCode
-    bne init_complete
+    cmp r0, #gpioSetupErrorCode
+    bne gpio_init_complete
     ldr r0, = gpioErrorMessage
     bl puts
-    mov r0, #setupErrorCode
+    mov r0, #gpioSetupErrorCode
     b done
     
-init_complete:
-    buzzerPin = 25
+gpio_init_complete:
+    push {lr}
+    bl 
 
 
 done: 
